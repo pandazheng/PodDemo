@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        /*
         var ret : Bool?
         ret = ios8()
         if ret == false
@@ -29,13 +30,12 @@ class ViewController: UIViewController {
         else
         {
             println("ios device version is ios8")
-        }
+        }*/
         
         let manager = AFHTTPRequestOperationManager()
-        let url = "http://api.openweathermap.org/data/2.5/weather"
-        let urlstring = NSURL(string: url)
+        let url = "http://douban.fm/j/explore/hot_channels"
         manager.GET(url, parameters: nil, success: { (operation:AFHTTPRequestOperation!, responseObject:AnyObject!) -> Void in
-            println("JSON" + responseObject.description!)
+            println("Response:" + responseObject.description!)
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
             println("Error:" + error.localizedDescription)
         }
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         //return UIDevice.currentDevice().systemVersion == "8.0"
         var deviceVersion: NSString = UIDevice.currentDevice().systemVersion
         
-        println(deviceVersion.substringWithRange(NSMakeRange(0, 1)))
+        //println(deviceVersion.substringWithRange(NSMakeRange(0, 1)))
         
         return deviceVersion.substringWithRange(NSMakeRange(0, 1)) == "8"
         
